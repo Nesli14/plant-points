@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Plant points">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#F2F6EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121A15" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEGElEQVR42u3dzVnjMBQF0OBvaqCCrCiBzqiAJlPMLGbHhMSWZcV699z1DJDoWH62/t7ePz8uIvey+AoEDoFD4BA4BA6BQ+AQOAQOgUMEDoFD4BA4BA6BQ+AQOAQOgUMEDoFD4BA4BA6BQ+AQOASO0rl9X30JcPwqgw849BlwNMkABY5HFPiA4xECPhYyFCJwNDZ8so+FDD7g2NXYmT4WMviAo0MDp/lYyOAjHUfHRs3xsZDBRy6OgxoywcdCBh+JOAY0Xm0fRmX5yMMxss2q+ljI4CMIx6vaqZ6PP2T8y/XrlvakmtVzvLxFi5FayOCjOI5TNUkZH95zSGkcJ7xSa3QeS4iMHw8jfNTHsUlGRx8rf9TsPrJqji4+ulOD4yw3lJ2NuvW/T915LLVl3P2X169bG5E2Z/P6yJ0muMnHXU8m+xR5dr19X+92Ic23koQ1c+nrVp76uNthmGBcp9to9tHxVjKjJ2tlf/URWGT8yNv750dOt/Hyh9K53o7Yn6P+64qInuOgFnp6Nff9vRN1Hobsn2wLZmef3G7jwQ+3jlLPociYHEexpprl4+g5ZGYcJXv4KT5UzZ4jYSYOHC1X2EtmajX8uvN3HpVrjmE+qk4cXGqDaJ705RZ2dhy9tho+qP3+l1dshmnNLRiaJ33t7DAspJ71WfHQdSslR2GyNozrUoLkTAJK3Gqy2UfaHPSITWq73GISiow4HF1KkMw56NGnJqwsQWJnGjtv5cnShKNlnNlZ4klNzUsTLs5bie1CFBlwtPQBx7E489CMQ4fnLgvgGF2CkAHHEwHhi1bg0GHAIXAIHAJHv7HTSh8Qjl3f9Qu/8WKTjS1qqkMzDsf673r8ooTyd8DiJzUNaID9CxTgGHFRjvfRPKw/BaBqNceYRSs7Zeg5XnlHP2hRwuM/af1YzCz3nazjynudtxIyq3QaHL32ODjivJVNMmw1WbMESZtVOhOO5kY9aFFTw4QP21vPUYJsKlEzl65MhmPPlddWgnQsP6d7OWZR07bzVi5Jk8QmO1KjV/Os2Qy/r4wZ36lb1HRg+anmmKzyaOsDdrKYdCjOoqYRdzE1x3yVx5ore0B9A8d8PgIPdXNbGc0Ojokr09g/r37PcdoGKDBZsMJt5YTNUGMaqZpDquM41ZVq9jkfxWVcSi6HJAOOiOaBo4gPx3jxEdRjlX2UPfkqajgi4gBAzZZY/y4uazJybysjl9jDwUfK25SUgvTQc0Ph4CNLRtyj7BH7L8DBR+KoTeJLsPIbI8MxzkfsSG/u6/OVTZ48ByB6bGXN5hzJ30/6wNvWzTng4IOMy2X2tbKi5xA4BA6BQ+AQOAQOETgEDoFD4BA4BA6BQ+AQOAQOETgEDoFD4BA4BA6BQ+AQOAQOgUMEDoFD4JBj8xcoOxxD3E9AxwAAAABJRU5ErkJggg==">
+<title>Plant points</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F6EE;--surface:#FFFFFF;--ink:#1B2A21;--muted:#5E6F63;--line:#D5DFD0;
+  --leaf:#2E7D4F;--leaf-soft:#D3E8DA;--beet:#8C2C5C;--gold:#C98F10;--bar:#B9CDBE;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121A15;--surface:#1B261F;--ink:#E6EFE8;--muted:#9AAEA0;--line:#2D3C32;
+  --leaf:#5FC18A;--leaf-soft:#26442F;--beet:#E27AAE;--gold:#EBBB45;--bar:#3A5043;color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#121A15;--surface:#1B261F;--ink:#E6EFE8;--muted:#9AAEA0;--line:#2D3C32;
+  --leaf:#5FC18A;--leaf-soft:#26442F;--beet:#E27AAE;--gold:#EBBB45;--bar:#3A5043;color-scheme:dark;}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:680px;margin:0 auto;padding:20px 18px calc(96px + env(safe-area-inset-bottom,0px))}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation;-webkit-appearance:none;appearance:none}
+input{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-height:44px;min-width:0;font-size:16px;-webkit-appearance:none;appearance:none}
+:focus-visible{outline:3px solid var(--beet);outline-offset:2px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:40px}
+h1{font-size:1.1rem;font-weight:600;margin:0;color:var(--muted)}
+.weeknav{display:flex;align-items:center;gap:6px}
+.weeknav span{font-size:.95rem;min-width:9.5em;text-align:center}
+.icon{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface)}
+.icon:disabled{opacity:.35;cursor:default}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;gap:6px;background:var(--surface);border-top:1px solid var(--line);padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px))}
+.tabs button{flex:1;max-width:220px;min-height:46px;border:0;background:none;border-radius:12px;padding:6px 4px;font-weight:600;font-size:.88rem;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:var(--leaf);color:#fff}
+:root[data-theme="dark"] .tabs button[aria-selected="true"]{color:#10201A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button[aria-selected="true"]{color:#10201A}}
+
+/* hero score */
+.hero{position:relative;overflow:hidden;background:#163A2A;color:#F4F7F1;border-radius:22px;padding:18px 18px 16px;box-shadow:0 10px 30px -14px rgba(10,40,25,.7)}
+.hero .top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.lvl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border-radius:999px;padding:5px 13px 5px 8px;font-weight:600;font-size:.95rem}
+.lvl i{font-style:normal;font-size:1.25rem}
+.streak{font-size:.88rem;color:#F2C14E;font-weight:600}
+.big{display:flex;align-items:baseline;gap:10px;margin:14px 0 12px}
+.big b{font-size:clamp(4.4rem,20vw,6.8rem);font-weight:800;line-height:.88;letter-spacing:-.045em;display:inline-block}
+.big b.pop{animation:pop .35s ease-out}
+.big span{font-size:1.2rem;color:rgba(244,247,241,.7)}
+.meter{position:relative;height:16px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+.meter i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:linear-gradient(90deg,#F2C14E,#FFE08A);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.meter u{position:absolute;top:3px;bottom:3px;width:2px;background:rgba(10,40,25,.45);text-decoration:none}
+.badges{display:flex;gap:6px;margin-top:14px;justify-content:space-between}
+.badge{flex:1;text-align:center;border-radius:12px;padding:6px 0 4px;background:rgba(255,255,255,.07);opacity:.4;filter:grayscale(.8);transition:all .3s}
+.badge.on{opacity:1;filter:none;background:rgba(242,193,78,.2)}
+.badge b{display:block;font-size:1.3rem;font-weight:400;line-height:1.2}
+.badge small{font-size:.68rem;color:rgba(244,247,241,.75)}
+.note{margin:12px 0 0;font-size:.9rem;min-height:1.4em;color:rgba(244,247,241,.75)}
+.note.done{color:#F2C14E;font-weight:600}
+.conf{position:absolute;bottom:25%;font-size:1.4rem;pointer-events:none;animation:rise 1.5s ease-out forwards}
+@keyframes rise{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),-200px) rotate(40deg);opacity:0}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.1)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.big b.pop,.conf{animation:none}.meter i{transition:none}}
+
+/* seasonal */
+.season-box{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.season-box h2{margin:0;font-size:1rem;font-weight:600}
+.season-box p{margin:2px 0 10px;font-size:.84rem;color:var(--muted)}
+.minis{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
+.mini{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:0;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 3px}
+.mini .e{font-size:1.7rem;line-height:1.2}.mini .n{font-size:.7rem}
+.mini[aria-pressed="true"]{background:var(--leaf-soft);border-color:var(--leaf)}
+
+/* groups and tiles */
+.group{margin-top:26px}
+.group h2{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:600;margin:0 0 8px}
+.group h2 small{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:auto}
+.addbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600;color:var(--leaf)}
+.addrow{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.addrow .nm{flex:1 1 140px}.addrow .em{width:84px}
+.addrow .go{background:var(--leaf);color:#fff;border:0;border-radius:10px;padding:0 16px;font-weight:600;min-height:42px}
+:root[data-theme="dark"] .addrow .go{color:#10201A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .addrow .go{color:#10201A}}
+.addrow .cx{border:0;background:none;color:var(--muted);padding:0 8px}
+.addrow .msg{flex-basis:100%;margin:0;font-size:.82rem;color:var(--beet);min-height:1.2em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.cell{position:relative}
+.tile{width:100%;position:relative;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:10px 4px 7px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.6;filter:grayscale(.75);transition:opacity .15s,filter .15s,background .15s}
+.tile .e{font-size:2rem;line-height:1.15}
+.tile .n{font-size:.72rem;line-height:1.2;overflow-wrap:anywhere}
+.tile[aria-pressed="true"]{opacity:1;filter:none;background:var(--leaf-soft);border-color:var(--leaf)}
+.tile[aria-pressed="true"]::after{content:"✓";position:absolute;top:3px;right:7px;font-size:.78rem;font-weight:800;color:var(--leaf)}
+.tile.q{border-style:dashed}
+.tile.season::before{content:"🍃";position:absolute;top:3px;left:6px;font-size:.7rem}
+.rm{position:absolute;bottom:-5px;right:-4px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;font-size:.78rem;line-height:1;padding:8px 11px}
+.legend{font-size:.8rem;color:var(--muted);margin:22px 0 0}
+.reset{margin-top:14px;border:0;background:none;color:var(--muted);font-size:.85rem;text-decoration:underline;padding:0}
+
+/* trends */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.card h2{margin:0 0 12px;font-size:1rem;font-weight:600}
+.bars{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:5px;height:170px;align-items:end}
+.bars .goal{position:absolute;left:0;right:0;border-top:1.5px dashed var(--gold);pointer-events:none}
+.bars .goal em{position:absolute;right:0;top:-1.4em;font-size:.72rem;font-style:normal;color:var(--gold)}
+.col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;border:0;background:none;padding:0;gap:3px}
+.col .v{font-size:.68rem;color:var(--muted)}
+.col .bar{width:100%;border-radius:6px 6px 2px 2px;background:var(--bar);min-height:3px}
+.col.hit .bar{background:var(--leaf)}
+.col.sel .bar{outline:2px solid var(--beet);outline-offset:2px}
+.labels{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin-top:6px}
+.labels span{font-size:.62rem;color:var(--muted);text-align:center;line-height:1.1}
+.labels span.sel{color:var(--beet);font-weight:600}
+.compare{margin:12px 0 0;font-size:.9rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.stat b{display:block;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.nsum{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.nsum b{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+.nsum span{color:var(--muted);font-size:.92rem}
+.picks{display:flex;gap:8px;flex-wrap:wrap}
+.pick{flex:1 1 150px;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 11px;display:grid;grid-template-columns:auto 1fr;gap:0 9px;align-items:center}
+.pick:hover{border-color:var(--leaf)}
+.pick .e{font-size:1.8rem;grid-row:span 2}
+.pick .n{font-weight:600;font-size:.9rem}
+.pick .a{font-size:.72rem;color:var(--muted);line-height:1.25}
+.cardhint{margin:0 0 10px;font-size:.84rem;color:var(--muted)}
+.ng{margin-top:20px}
+.ng h2{font-size:1rem;margin:0 0 8px;font-weight:600}
+.nrow{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:9px 12px;margin-bottom:8px}
+.nrow.s0{border-left-color:var(--beet)}.nrow.s1{border-left-color:var(--gold)}.nrow.s2{border-left-color:var(--leaf)}
+.nh{display:flex;justify-content:space-between;gap:8px;font-size:.92rem;font-weight:600}
+.nh .ns{font-size:.78rem;color:var(--muted);font-weight:400}
+.nb{height:6px;border-radius:99px;background:var(--bar);margin:6px 0;overflow:hidden}
+.nb i{display:block;height:100%;background:var(--leaf);border-radius:99px}
+.nrow.s1 .nb i{background:var(--gold)}.nrow.s0 .nb i{background:var(--beet)}
+.nsrc{font-size:1.05rem;letter-spacing:2px;line-height:1.3}
+.ntry{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:.78rem;color:var(--muted)}
+.try{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 13px;font-size:.82rem}
+.nhint{margin:5px 0 0;font-size:.76rem;color:var(--muted)}
+.stat span{font-size:.82rem;color:var(--muted)}
+.tile,.mini,.pick,.col,.tabs button{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.reset{padding:10px 0}
+textarea{width:100%;font-size:16px;font-family:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;resize:vertical}
+.bkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.bkb{min-height:44px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:0 16px;font-weight:600}
+.bkmsg{margin:8px 0 0;font-size:.84rem;color:var(--muted);min-height:1.2em}
+.wk{min-width:9.5em;min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:0 12px;font-size:.92rem;font-weight:600}
+.wk::after{content:" ▾";color:var(--muted)}
+.wk[aria-expanded="true"]::after{content:" ▴"}
+.wkpanel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px}
+.wkchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:6px}
+.wkc{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;font-size:.8rem}
+.wkc b{font-weight:400;color:var(--muted);font-size:.72rem}
+.wkc.sel{border-color:var(--leaf);background:var(--leaf-soft)}
+.wkdate{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:.88rem;color:var(--muted);flex-wrap:wrap}
+.banner{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;background:var(--leaf-soft);border:1px solid var(--leaf);border-radius:12px;padding:6px 6px 6px 14px;font-size:.88rem}
+.banner button{border:0;background:var(--leaf);color:#fff;border-radius:9px;padding:0 12px;min-height:40px;font-weight:600;font-size:.85rem}
+:root[data-theme="dark"] .banner button{color:#10201A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .banner button{color:#10201A}}
+/* round score card */
+.hero{text-align:center;border-radius:36px;padding:24px 16px 18px}
+.ringwrap{position:relative;width:min(76vw,260px);aspect-ratio:1;margin:0 auto}
+.ring{width:100%;height:100%;display:block;transform:rotate(-90deg)}
+.ring circle{fill:none}
+.ring .trk{stroke:rgba(255,255,255,.13);stroke-width:16}
+.ring .prog{stroke:#F2C14E;stroke-width:16;stroke-linecap:round;transition:stroke-dasharray .6s cubic-bezier(.2,.8,.2,1)}
+.ring .dot{fill:#163A2A;stroke:rgba(255,255,255,.4);stroke-width:1.5}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.center .lvl{padding:4px 12px 4px 7px;font-size:.88rem}
+.center .lvl i{font-size:1.1rem}
+.big{justify-content:center;margin:2px 0 0}
+.big b{font-size:clamp(3.6rem,17vw,5rem);line-height:.95}
+.center .of{font-size:.9rem;color:rgba(244,247,241,.7)}
+.streak{margin-top:12px;display:block}
+.badges{justify-content:space-between;gap:2px;margin-top:14px}
+.badge{flex:0 0 auto;width:44px;background:none;padding:0;border-radius:0}
+.badge.on{background:none}
+.badge b{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 2px}
+.badge.on b{background:rgba(242,193,78,.28);box-shadow:0 0 0 2px #F2C14E}
+@media (prefers-reduced-motion:reduce){.ring .prog{transition:none}}
+.sync{margin:0;font-size:.72rem;color:var(--muted)}
+.sync::before{content:"● ";color:var(--gold)}
+.sync.saved::before{color:var(--leaf)}
+.sync.error::before{color:var(--beet)}
+.search{margin-top:14px}
+.search input{width:100%;border-radius:14px;-webkit-appearance:none;appearance:none}
+.qmsg{margin:6px 4px 0;font-size:.84rem;color:var(--leaf);min-height:0}
+.qmsg:empty{display:none}
+.qres{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-top:8px;overflow:hidden}
+.qrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:8px 14px;min-height:50px}
+.qrow .e{font-size:1.6rem}
+.qrow .t{flex:1;font-weight:600}
+.qrow small{color:var(--muted);font-size:.78rem}
+.qrow:disabled{opacity:.55;cursor:default}
+.qadd{padding:12px 14px;font-size:.88rem;color:var(--muted)}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.try.likely{border-color:var(--leaf);background:var(--leaf-soft);color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>Plant points</h1><p class="sync" id="sync" role="status"></p></div>
+    <div class="weeknav" id="weekNav">
+      <button class="icon" id="prev" aria-label="Previous week">‹</button>
+      <button class="wk" id="label" aria-expanded="false" aria-controls="wkPanel"></button>
+      <button class="icon" id="next" aria-label="Next week">›</button>
+    </div>
+  </header>
+  <div class="wkpanel" id="wkPanel" hidden>
+    <p class="cardhint" style="margin-bottom:8px">Pick a week to add or change what you ate.</p>
+    <div class="wkchips" id="wkChips"></div>
+    <label class="wkdate">Or jump to a date <input type="date" id="wkDate"></label>
+  </div>
+  <div class="banner" id="banner" hidden><span id="bannerT"></span><button id="bannerB">Back to this week</button></div>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-week" aria-selected="true">🌱 This week</button>
+    <button role="tab" id="tab-nutrients" aria-selected="false">🥗 Nutrients</button>
+    <button role="tab" id="tab-trends" aria-selected="false">📈 Trends</button>
+  </div>
+
+  <div id="view-week">
+    <section class="hero" id="hero" aria-live="polite">
+      <div class="ringwrap">
+        <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+          <circle class="trk" cx="110" cy="110" r="94"></circle>
+          <circle class="prog" id="fill" cx="110" cy="110" r="94" pathLength="100" stroke-dasharray="0 100"></circle>
+          <g id="ticks"></g>
+        </svg>
+        <div class="center">
+          <span class="lvl"><i id="lvlE"></i><span id="lvlN"></span></span>
+          <div class="big"><b id="num">0</b></div>
+          <span class="of">of 30 points</span>
+        </div>
+      </div>
+      <div class="streak" id="streak"></div>
+      <div class="badges" id="badges"></div>
+      <p class="note" id="note"></p>
+    </section>
+
+    <div class="search">
+      <input type="search" id="q" placeholder="🔍 Search or add a food" autocomplete="off" autocapitalize="none" enterkeyhint="search" aria-label="Search for a food">
+      <p class="qmsg" id="qmsg" role="status"></p>
+      <div class="qres" id="qres" hidden></div>
+    </div>
+
+    <section class="season-box">
+      <h2 id="seasonT"></h2>
+      <p id="seasonP"></p>
+      <div class="minis" id="minis"></div>
+    </section>
+
+    <div id="groups"></div>
+    <p class="legend">🍃 marks foods in season. Tap a food you ate. Tap again to unmark it.</p>
+    <button class="reset" id="clear">Clear this week</button>
+  </div>
+
+  <div id="view-nutrients" hidden>
+    <div class="card nsum"><b id="nutNum"></b><span id="nutTxt"></span></div>
+    <div class="card" id="nutPicks"></div>
+    <div id="nutGroups"></div>
+    <p class="legend">This is an estimate. It checks which of your foods are a good source of each nutrient, not how much you ate, and it only covers foods from the list (not your own additions). Vitamin B12, vitamin D and iodine come mostly from animal foods, fortified foods, sunlight or supplements, so they are not shown. This is general information, not medical advice.</p>
+  </div>
+
+  <div id="view-trends" hidden>
+    <div class="card">
+      <h2>Points per week</h2>
+      <div class="bars" id="bars"></div>
+      <div class="labels" id="labels"></div>
+      <p class="compare" id="compare"></p>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="card" style="margin-top:12px">
+      <h2>Back up your data</h2>
+      <p class="cardhint">Your entries save automatically in this browser on this device. Nothing is sent to a server. To keep a safe copy or move to another device, copy the backup text below, or paste one here to restore it.</p>
+      <textarea id="bk" rows="3" aria-label="Backup text"></textarea>
+      <div class="bkrow"><button class="bkb" id="bkOut">Show backup</button><button class="bkb" id="bkIn">Restore from text</button></div>
+      <p class="bkmsg" id="bkMsg" role="status"></p>
+    </div>
+  </div>
+</main>
+
+<script>
+const TARGET = 30;
+const GROUPS = [
+ {t:"Fruit",p:1,d:"🍎",i:{apple:"🍎",banana:"🍌",orange:"🍊",pear:"🍐",plum:"🟣",grapes:"🍇",strawberries:"🍓",blueberries:"🫐",blackberries:"🫐",raspberries:"🍓",cherries:"🍒",peach:"🍑",mango:"🥭",pineapple:"🍍",kiwi:"🥝",lemon:"🍋",watermelon:"🍉",melon:"🍈",coconut:"🥥",avocado:"🥑",olives:"🫒"}},
+ {t:"Vegetables and herbs",p:1,d:"🥬",i:{tomato:"🍅",cucumber:"🥒",carrot:"🥕",broccoli:"🥦",cauliflower:"🥦",spinach:"🥬",kale:"🥬",lettuce:"🥬",cabbage:"🥬","red cabbage":"🟣","brussels sprouts":"🥬",kohlrabi:"🥬",leek:"🌿",onion:"🧅",garlic:"🧄",sweetcorn:"🌽",courgette:"🥒",aubergine:"🍆",peppers:"🫑",mushrooms:"🍄",potato:"🥔","sweet potato":"🍠",parsnip:"🥕",beetroot:"🟣",celery:"🥬",asparagus:"🌿",rhubarb:"🌿",radish:"🔴",pumpkin:"🎃",parsley:"🌿",basil:"🌿",mint:"🌿",coriander:"🌿"}},
+ {t:"Legumes",p:1,d:"🫘",i:{chickpeas:"🫘",lentils:"🫘","black beans":"🫘","kidney beans":"🫘","green beans":"🫘",peas:"🟢",edamame:"🟢",tofu:"⬜"}},
+ {t:"Nuts and seeds",p:1,d:"🥜",i:{almonds:"🌰",walnuts:"🌰",cashews:"🌰",hazelnuts:"🌰",pecans:"🌰",pistachios:"🥜",peanuts:"🥜","chia seeds":"🌱","flax seeds":"🌱","pumpkin seeds":"🎃","sunflower seeds":"🌻","sesame seeds":"🌱","hemp seeds":"🌱"}},
+ {t:"Tea, coffee and spices",p:0.25,d:"🍵",i:{"black tea":"🍵","green tea":"🍵","herbal tea":"🫖",coffee:"☕",matcha:"🍵",cinnamon:"🧂",turmeric:"🧂",cumin:"🧂",paprika:"🌶️","black pepper":"🧂",ginger:"🧂",cardamom:"🧂",cloves:"🧂",nutmeg:"🧂",oregano:"🌿",thyme:"🌿",rosemary:"🌿",saffron:"🌼"}}
+];
+// Typical Central European (German) harvest calendar, by month (0 = January)
+const WINTER = ["apple","pear","kale","cabbage","red cabbage","brussels sprouts","leek","beetroot","carrot","parsnip","potato","onion"];
+const SEASON = [
+ WINTER, WINTER,
+ ["leek","carrot","onion","potato","parsnip","apple","spinach","radish"],
+ ["asparagus","spinach","radish","lettuce","rhubarb","leek"],
+ ["asparagus","strawberries","rhubarb","kohlrabi","radish","spinach","lettuce"],
+ ["strawberries","cherries","raspberries","asparagus","peas","courgette","kohlrabi","lettuce","cucumber","radish"],
+ ["raspberries","blueberries","cherries","blackberries","tomato","cucumber","courgette","peas","green beans","lettuce","kohlrabi"],
+ ["blueberries","blackberries","plum","apple","tomato","cucumber","courgette","peppers","sweetcorn","aubergine","green beans","cauliflower","broccoli"],
+ ["apple","pear","plum","grapes","blackberries","pumpkin","tomato","peppers","sweetcorn","courgette","cauliflower","broccoli","carrot","beetroot","mushrooms"],
+ ["apple","pear","grapes","pumpkin","red cabbage","cabbage","kale","brussels sprouts","leek","beetroot","carrot","celery","mushrooms","cauliflower","broccoli","parsnip","walnuts","hazelnuts"],
+ ["apple","pear","kale","brussels sprouts","red cabbage","cabbage","leek","beetroot","carrot","parsnip","pumpkin","potato","onion","walnuts","hazelnuts"],
+ WINTER
+];
+const LEVELS = [{t:0,n:"Seed",e:"🌰"},{t:5,n:"Sprout",e:"🌱"},{t:10,n:"Grower",e:"🌿"},{t:15,n:"Leafy",e:"🥬"},{t:20,n:"Blooming",e:"🌼"},{t:25,n:"Harvester",e:"🥕"},{t:30,n:"Champion",e:"🏆"},{t:40,n:"Legend",e:"👑"}];
+
+// Which nutrients each food is a good source of (general nutrition knowledge, not amounts)
+const NUTN = {A:"Vitamin A",C:"Vitamin C",E:"Vitamin E",K:"Vitamin K",B:"Vitamin B6",F:"Folate (B9)",P:"Potassium",M:"Magnesium",I:"Iron",L:"Calcium",Z:"Zinc",S:"Selenium",G:"Manganese",R:"Fibre",T:"Protein",O:"Omega-3 (ALA)",X:"Antioxidants"};
+const NGROUPS = [["Vitamins","ACEKBF"],["Minerals","PMILZSG"],["Fibre, protein and plant compounds","RTOX"]];
+const NHINT = {I:"Plant iron absorbs better with vitamin C, such as peppers or citrus.",L:"Calcium from kale and tofu is well absorbed. Spinach is not a good calcium source."};
+const FN = {apple:"RXC",banana:"BPGR",orange:"CFRX",pear:"R",plum:"KCX",grapes:"KX",strawberries:"CGFXR",blueberries:"KCGXR",blackberries:"CKGRXE",raspberries:"CGRX",cherries:"CX",peach:"AC",mango:"ACFE",pineapple:"CGB",kiwi:"CKERP",lemon:"C",watermelon:"ACX",melon:"ACP",coconut:"RGS",avocado:"KFEPRB",olives:"E",
+tomato:"CKPX",cucumber:"K",carrot:"AKRB",broccoli:"CKFRB",cauliflower:"CKFBR",spinach:"AKFIMGPE",kale:"ACKLG",lettuce:"AKF",cabbage:"CKFBR","red cabbage":"CKAXBR","brussels sprouts":"CKFBRG",kohlrabi:"CPBR",leek:"KFG",onion:"BRX",garlic:"BGCS",sweetcorn:"FRGM",courgette:"CBGPK",aubergine:"RGX",peppers:"CABFE",mushrooms:"SPB",potato:"CBPR","sweet potato":"ACBPGR",parsnip:"FRCKG",beetroot:"FGPX",celery:"KFP",asparagus:"KFAEC",rhubarb:"KCL",radish:"C",pumpkin:"ACPE",parsley:"KC",basil:"K",mint:"X",coriander:"K",
+chickpeas:"FIMZGRTBP",lentils:"FIMZGRTBP","black beans":"FIMGRTPZ","kidney beans":"FIMGRTPZK","green beans":"KCFRG",peas:"CKFRTGB",edamame:"FKIMTRZG",tofu:"TILMZSG",
+almonds:"EMLTRG",walnuts:"OGMTRB",cashews:"IZMGT",hazelnuts:"EGMFTR",pecans:"GZRX",pistachios:"BPTRMX",peanuts:"FMTER","chia seeds":"OLMRTGI","flax seeds":"ORMGTB","pumpkin seeds":"MZIGTP","sunflower seeds":"EBFMSTZG","sesame seeds":"LIMZGT","hemp seeds":"TMZIOEG"};
+// Tea, coffee and spices are eaten in tiny amounts, so they only count towards antioxidants
+"black tea,green tea,herbal tea,coffee,matcha,cinnamon,turmeric,cumin,paprika,black pepper,ginger,cardamom,cloves,nutmeg,oregano,thyme,rosemary,saffron".split(",").forEach(n=>FN[n]="X");
+
+const $ = id => document.getElementById(id);
+const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
+const PTS = {}, EMO = {};
+let custom = {};
+try { custom = JSON.parse(localStorage.getItem("plantpoints.custom")) || {}; } catch (e) { custom = {}; }
+function saveCustom(){ cts = Date.now(); persistLocal(); schedule(); }
+function rebuildMaps(){
+  Object.keys(PTS).forEach(k=>{ delete PTS[k]; delete EMO[k]; });
+  GROUPS.forEach(g=>{
+    Object.keys(g.i).forEach(n=>{ PTS[n]=g.p; EMO[n]=g.i[n]; });
+    (custom[g.t]||[]).forEach(c=>{ PTS[c.n]=g.p; EMO[c.n]=c.e; });
+  });
+}
+rebuildMaps();
+
+let data = {};
+try {
+  const v2 = localStorage.getItem("plantpoints.v2");
+  if (v2) data = JSON.parse(v2) || {};
+  else {
+    const v1 = JSON.parse(localStorage.getItem("plantpoints.v1") || "{}");
+    Object.keys(v1).forEach(k=>{ data[k] = v1[k].map(x=>x.n).filter(n=>n in PTS); });
+  }
+} catch (e) { data = {}; }
+let wts = {}, cts = 0;
+try { const mt = JSON.parse(localStorage.getItem("plantpoints.meta") || "{}"); wts = mt.wts || {}; cts = mt.cts || 0; } catch (e) {}
+Object.keys(data).forEach(k=>{ if (!(k in wts)) wts[k] = 1; });
+function persistLocal(){
+  try {
+    localStorage.setItem("plantpoints.v2", JSON.stringify(data));
+    localStorage.setItem("plantpoints.custom", JSON.stringify(custom));
+    localStorage.setItem("plantpoints.meta", JSON.stringify({wts:wts, cts:cts}));
+  } catch (e) {}
+}
+function save(){ persistLocal(); schedule(); }
+
+const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+function monday(d){ const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; }
+const addDays = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const thisMon = monday(new Date());
+let cur = new Date(thisMon);
+const month = new Date().getMonth();
+const fmt = d => d.toLocaleDateString(undefined,{day:"numeric",month:"short"});
+const picked = k => data[k] || [];
+const total = k => picked(k).reduce((s,n)=>s+(PTS[n]||0),0);
+const show = n => (Math.round(n*4)/4).toString();
+const inSeason = n => SEASON[month].includes(n);
+
+// search: find a food and add it to the right category
+const has = (o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+const SHORT = {"Fruit":"Fruit","Vegetables and herbs":"Vegetables","Legumes":"Legumes","Nuts and seeds":"Nuts and seeds","Tea, coffee and spices":"Tea and spices (¼)"};
+const EXTRA_SRC = {
+ "Fruit":"grapefruit=🍊,lime=🍋,tangerine=🍊,clementine=🍊,mandarin=🍊,nectarine=🍑,apricot=🍑,fig,dates=🌴,pomegranate=🔴,cranberries=🔴,gooseberries=🟢,redcurrants=🔴,blackcurrants=🟣,elderberries=🟣,papaya=🥭,guava=🍐,persimmon=🍊,lychee,passion fruit=🟣,dragon fruit=🌸,quince=🍐",
+ "Vegetables and herbs":"rocket=🌿,watercress=🌿,endive=🥬,chicory=🥬,chard=🥬,bok choy=🥬,spring onion=🧅,shallot=🧅,fennel=🌿,artichoke=🌿,celeriac=🥔,turnip=🥔,swede=🥔,okra=🌿,squash=🎃,yam=🍠,cassava=🥔,bean sprouts=🌱,seaweed=🌿,nori=🌿,dill=🌿,chives=🌿,sage=🌿,tarragon=🌿,lemongrass=🌿,sorrel=🌿,collard greens=🥬,spring greens=🥬",
+ "Legumes":"black-eyed peas=🫘,split peas=🟢,soybeans=🫘,mung beans=🫘,broad beans=🫘,pinto beans=🫘,cannellini beans=🫘,borlotti beans=🫘,haricot beans=🫘,lupini beans=🫘,tempeh=🫘,hummus=🫘,snow peas=🟢,sugar snap peas=🟢",
+ "Nuts and seeds":"macadamia=🌰,brazil nuts=🌰,pine nuts=🌰,chestnuts=🌰,poppy seeds=🌱,linseed=🌱,tahini=🌱",
+ "Tea, coffee and spices":"earl grey=🍵,rooibos=🍵,chamomile=🫖,peppermint tea=🫖,oolong tea=🍵,chai=🫖,garam masala=🧂,curry powder=🧂,star anise=🧂,bay leaf=🌿,vanilla=🧂,sumac=🧂,caraway=🧂,cayenne=🌶️,chili flakes=🌶️,fennel seeds=🧂,mustard=🧂,espresso=☕"
+};
+const EXTRA = [];
+Object.keys(EXTRA_SRC).forEach(t=>EXTRA_SRC[t].split(",").forEach(x=>{ const a = x.split("="); EXTRA.push({n:a[0].trim(), e:a[1]||"", t:t}); }));
+const ALIAS = {zucchini:"courgette",eggplant:"aubergine","bell pepper":"peppers","bell peppers":"peppers","red pepper":"peppers","green pepper":"peppers",cilantro:"coriander",arugula:"rocket",garbanzo:"chickpeas","garbanzo beans":"chickpeas",flaxseed:"flax seeds","flax seed":"flax seeds",corn:"sweetcorn",scallion:"spring onion",scallions:"spring onion","spring onions":"spring onion","brussel sprouts":"brussels sprouts","swiss chard":"chard","pak choi":"bok choy",pakchoi:"bok choy"};
+const gByTitle = t => GROUPS.find(g=>g.t===t);
+const groupOfName = n => GROUPS.find(g=>has(g.i,n) || (custom[g.t]||[]).some(c=>c.n===n));
+const extraOf = n => EXTRA.find(x=>x.n===n && !has(PTS,n));
+function guessGroup(q){
+  if (/berr|fruit|melon|apple|pear|plum|peach|cherr|grape|citrus|orange|lemon|lime|mango|apricot|\bfig/.test(q)) return "Fruit";
+  if (/bean|lentil|\bpea|chickpea|soy|tofu|tempeh|lupin/.test(q)) return "Legumes";
+  if (/\bnut|seed|almond|pistach|cashew|pecan/.test(q)) return "Nuts and seeds";
+  if (/\btea\b|coffee|spice|powder|masala|pepper|cinnamon|clove|cumin|seasoning|herbal|matcha/.test(q)) return "Tea, coffee and spices";
+  return "Vegetables and herbs";
+}
+function canon(q){
+  if (has(ALIAS,q)) q = ALIAS[q];
+  const c = [q, q+"s", q+"es"];
+  if (q.endsWith("s")) c.push(q.slice(0,-1));
+  if (q.endsWith("es")) c.push(q.slice(0,-2));
+  if (q.endsWith("y")) c.push(q.slice(0,-1)+"ies");
+  if (q.endsWith("ies")) c.push(q.slice(0,-3)+"y");
+  return c.find(x=>has(PTS,x) || EXTRA.some(e=>e.n===x)) || q;
+}
+let firstAction = null, msgTimer = null;
+function say(t){ const m = $("qmsg"); m.textContent = t; clearTimeout(msgTimer); msgTimer = setTimeout(()=>{ m.textContent = ""; }, 3500); }
+function finishSearch(t){ $("q").value = ""; renderSearch(); say(t); }
+function pickFood(n){
+  if (has(PTS,n)){ toggle(n); finishSearch("Marked "+cap(n)+" as eaten."); return; }
+  const ex = extraOf(n); if (!ex) return;
+  const g = gByTitle(ex.t), r = addCustom(g, ex.n, ex.e);
+  if (r) say(r); else finishSearch("Added "+cap(ex.n)+" to "+SHORT[g.t]+" and marked it eaten.");
+}
+function addNew(raw, g){
+  const r = addCustom(g, raw, "");
+  if (r) say(r); else finishSearch("Added "+cap(raw)+" to "+SHORT[g.t]+" and marked it eaten.");
+}
+function renderSearch(){
+  const box = $("qres"), raw = $("q").value.trim().toLowerCase().replace(/\s+/g," ");
+  box.innerHTML = ""; firstAction = null;
+  box.hidden = !raw; if (!raw) return;
+  const c = canon(raw);
+  const names = Object.keys(PTS).concat(EXTRA.filter(e=>!has(PTS,e.n)).map(e=>e.n));
+  const rank = n => n===c ? 0 : (n.startsWith(raw)||n.startsWith(c)) ? 1 : n.split(" ").some(w=>w.startsWith(raw)) ? 2 : (n.includes(raw)||n.includes(c)) ? 3 : 9;
+  const rows = names.map(n=>({n:n, r:rank(n)})).filter(x=>x.r<9).sort((a,b)=>a.r-b.r || a.n.length-b.n.length).slice(0,7);
+  const sel = new Set(picked(iso(cur)));
+  rows.forEach(x=>{
+    const inCat = has(PTS,x.n), ex = inCat ? null : extraOf(x.n);
+    const g = inCat ? groupOfName(x.n) : gByTitle(ex.t), eaten = inCat && sel.has(x.n);
+    const b = document.createElement("button"); b.className = "qrow"+(eaten?" done":""); b.disabled = eaten;
+    b.innerHTML = '<span class="e"></span><span class="t"></span><small></small>';
+    b.querySelector(".e").textContent = inCat ? EMO[x.n] : (ex.e || g.d);
+    b.querySelector(".t").textContent = cap(x.n);
+    b.querySelector("small").textContent = eaten ? "✓ Eaten" : "Add to "+SHORT[g.t];
+    b.onclick = ()=>pickFood(x.n);
+    box.appendChild(b);
+    if (!eaten && !firstAction) firstAction = ()=>pickFood(x.n);
+  });
+  if (!rows.some(x=>x.n===c)){
+    const guess = guessGroup(raw), d = document.createElement("div"); d.className = "qadd";
+    d.innerHTML = '<span class="qt"></span><div class="qchips"></div>';
+    d.querySelector(".qt").textContent = "Not listed. Add “"+raw+"” to:";
+    GROUPS.slice().sort((a,b)=>(b.t===guess)-(a.t===guess)).forEach(g=>{
+      const b = document.createElement("button"); b.className = "try"+(g.t===guess?" likely":"");
+      b.textContent = SHORT[g.t]+(g.t===guess?" ★":""); b.onclick = ()=>addNew(raw,g);
+      d.querySelector(".qchips").appendChild(b);
+    });
+    box.appendChild(d);
+    if (!firstAction) firstAction = ()=>addNew(raw, gByTitle(guess));
+  }
+}
+
+function toggle(n){
+  const k = iso(cur), list = picked(k);
+  data[k] = list.includes(n) ? list.filter(x=>x!==n) : list.concat([n]);
+  wts[k] = Date.now();
+  save(); render();
+}
+function twoStep(btn, armedLabel, action){
+  const orig = btn.textContent;
+  btn.onclick = ()=>{
+    if (btn.dataset.arm){ delete btn.dataset.arm; btn.textContent = orig; action(); return; }
+    btn.dataset.arm = "1"; btn.textContent = armedLabel;
+    setTimeout(()=>{ if (btn.isConnected){ delete btn.dataset.arm; btn.textContent = orig; } }, 3000);
+  };
+}
+function firstChar(s){
+  s = (s||"").trim(); if (!s) return "";
+  try { return [...new Intl.Segmenter().segment(s)][0].segment; } catch (e) { return Array.from(s)[0]; }
+}
+
+function addCustom(g, name, emoji){
+  const n = name.trim().toLowerCase().replace(/\s+/g," ");
+  if (!n) return "Type a name first.";
+  if (n in PTS) return cap(n)+" is already listed.";
+  custom[g.t] = (custom[g.t]||[]).concat([{n:n, e:firstChar(emoji)||g.d}]);
+  saveCustom(); rebuildMaps();
+  const k = iso(cur); data[k] = picked(k).concat([n]); wts[k] = Date.now(); save();
+  buildTiles(); render();
+  return "";
+}
+
+function buildTiles(){
+  const root = $("groups"); root.innerHTML = "";
+  GROUPS.forEach(g=>{
+    const sec = document.createElement("section"); sec.className = "group"; sec.dataset.t = g.t;
+    sec.innerHTML = '<h2><span class="ttl"></span><button class="addbtn" aria-expanded="false">+ Add</button><small></small></h2>'
+      + '<div class="addrow" hidden><input class="nm" type="text" placeholder="Name, e.g. fennel" aria-label="Food name" autocomplete="off">'
+      + '<input class="em" type="text" placeholder="Emoji" aria-label="Emoji (optional)"><button class="go">Add</button><button class="cx">Cancel</button><p class="msg" role="status"></p></div>'
+      + '<div class="grid"></div>';
+    sec.querySelector(".ttl").textContent = g.t;
+    const row = sec.querySelector(".addrow"), btn = sec.querySelector(".addbtn"), msg = sec.querySelector(".msg");
+    const nm = sec.querySelector(".nm"), em = sec.querySelector(".em");
+    const close = ()=>{ row.hidden = true; btn.setAttribute("aria-expanded","false"); msg.textContent=""; nm.value=""; em.value=""; };
+    btn.onclick = ()=>{ if (row.hidden){ row.hidden=false; btn.setAttribute("aria-expanded","true"); nm.focus(); } else close(); };
+    sec.querySelector(".cx").onclick = close;
+    const submit = ()=>{ const r = addCustom(g, nm.value, em.value); if (r) msg.textContent = r; };
+    sec.querySelector(".go").onclick = submit;
+    [nm,em].forEach(i=>i.addEventListener("keydown", e=>{ if (e.key==="Enter") submit(); }));
+
+    const grid = sec.querySelector(".grid");
+    const names = Object.keys(g.i).concat((custom[g.t]||[]).map(c=>c.n));
+    names.forEach(n=>{
+      const cell = document.createElement("div"); cell.className = "cell";
+      const b = document.createElement("button");
+      b.className = "tile"+(g.p<1?" q":""); b.dataset.n = n;
+      b.innerHTML = '<span class="e"></span><span class="n"></span>';
+      b.querySelector(".e").textContent = EMO[n];
+      b.querySelector(".n").textContent = cap(n);
+      b.onclick = ()=>toggle(n);
+      cell.appendChild(b);
+      if (!(n in g.i)){
+        const r = document.createElement("button"); r.className = "rm"; r.textContent = "×"; r.setAttribute("aria-label","Remove "+n+" from the list");
+        twoStep(r, "Remove?", ()=>{
+          custom[g.t] = custom[g.t].filter(c=>c.n!==n); saveCustom();
+          Object.keys(data).forEach(k=>{ data[k] = data[k].filter(x=>x!==n); wts[k] = Date.now(); }); save();
+          rebuildMaps(); buildTiles(); render();
+        });
+        cell.appendChild(r);
+      }
+      grid.appendChild(cell);
+    });
+    root.appendChild(sec);
+  });
+}
+
+function streak(){
+  let w = new Date(thisMon), n = 0;
+  if (total(iso(w)) < TARGET) w = addDays(w,-7);
+  while (total(iso(w)) >= TARGET && n < 520){ n++; w = addDays(w,-7); }
+  return n;
+}
+
+let lastKey = null, lastT = 0;
+function burst(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const hero = $("hero"), em = ["🥦","🍓","🥕","🍊","🫐","✨"];
+  for (let i=0;i<16;i++){
+    const s = document.createElement("span"); s.className = "conf"; s.textContent = em[i%em.length];
+    s.style.left = (5+Math.random()*88)+"%"; s.style.setProperty("--dx",(Math.random()*90-45)+"px"); s.style.animationDelay = (Math.random()*.3)+"s";
+    hero.appendChild(s); setTimeout(()=>s.remove(),2000);
+  }
+}
+
+function renderHero(k,t){
+  let lv = LEVELS[0]; LEVELS.forEach(l=>{ if (t>=l.t) lv = l; });
+  $("lvlE").textContent = lv.e; $("lvlN").textContent = lv.n;
+  const s = streak();
+  $("streak").textContent = s>0 ? "🔥 "+s+"-week streak" : "Reach 30 to start a streak";
+  $("num").textContent = show(t);
+  $("fill").setAttribute("stroke-dasharray", Math.min(100, t/TARGET*100)+" 100");
+  if (!$("ticks").children.length){
+    $("ticks").innerHTML = [5,10,15,20,25].map(x=>{ const a = x/TARGET*2*Math.PI; return '<circle class="dot" cx="'+(110+94*Math.cos(a)).toFixed(1)+'" cy="'+(110+94*Math.sin(a)).toFixed(1)+'" r="4"></circle>'; }).join("");
+    $("badges").innerHTML = LEVELS.slice(1).map(l=>'<div class="badge" data-t="'+l.t+'" title="'+l.n+'"><b>'+l.e+'</b><small>'+l.t+'</small></div>').join("");
+  }
+  document.querySelectorAll(".badge").forEach(b=>b.classList.toggle("on", t>=+b.dataset.t));
+  const note = $("note");
+  if (t >= 40) note.textContent = "Garden legend. "+show(t-TARGET)+" points past the target.";
+  else if (t >= TARGET) note.textContent = "Target reached"+(t>TARGET?" · +"+show(t-TARGET)+" bonus":"");
+  else note.textContent = "Level: "+lv.n+". Keep going.";
+  note.className = "note"+(t>=TARGET?" done":"");
+  if (k===lastKey && t!==lastT){ const nb = $("num"); nb.classList.remove("pop"); void nb.offsetWidth; nb.classList.add("pop"); }
+  if (k===lastKey && lastT<TARGET && t>=TARGET) burst();
+  lastKey = k; lastT = t;
+}
+
+function renderSeason(sel){
+  const mn = new Date().toLocaleDateString(undefined,{month:"long"});
+  const list = SEASON[month].filter(n=>n in PTS);
+  const left = list.filter(n=>!sel.has(n));
+  $("seasonT").textContent = "In season in "+mn;
+  $("seasonP").textContent = left.length
+    ? "Local and at their best right now. "+left.length+" still to try this week."
+    : "You’ve eaten everything in season this week. Nice.";
+  const m = $("minis"); m.innerHTML = "";
+  left.concat(list.filter(n=>sel.has(n))).forEach(n=>{
+    const b = document.createElement("button"); b.className = "mini"; b.setAttribute("aria-pressed", sel.has(n));
+    b.innerHTML = '<span class="e"></span><span class="n"></span>';
+    b.querySelector(".e").textContent = EMO[n]; b.querySelector(".n").textContent = cap(n);
+    b.onclick = ()=>toggle(n); m.appendChild(b);
+  });
+}
+
+function render(){
+  const k = iso(cur), sel = new Set(picked(k)), t = total(k);
+  const isNow = k === iso(thisMon);
+  $("label").textContent = isNow ? "This week" : fmt(cur)+" – "+fmt(addDays(cur,6));
+  $("next").disabled = isNow;
+  updateWeekUI(k,isNow);
+  renderHero(k,t);
+  renderSeason(sel);
+  document.querySelectorAll(".tile").forEach(b=>{
+    b.setAttribute("aria-pressed", sel.has(b.dataset.n));
+    b.classList.toggle("season", inSeason(b.dataset.n));
+  });
+  document.querySelectorAll(".group").forEach(sec=>{
+    const g = GROUPS.find(x=>x.t===sec.dataset.t);
+    const names = Object.keys(g.i).concat((custom[g.t]||[]).map(c=>c.n));
+    sec.querySelector("small").textContent = (g.p<1?"¼ point each · ":"1 point each · ")+names.filter(n=>sel.has(n)).length+" of "+names.length;
+  });
+  renderTrends(k,t);
+  renderNutrients(sel);
+  if ($("q").value) renderSearch();
+}
+
+function renderTrends(k,t){
+  const weeks = []; for (let i=11;i>=0;i--) weeks.push(addDays(thisMon,-7*i));
+  const vals = weeks.map(w=>total(iso(w)));
+  const max = Math.max(TARGET+5, ...vals);
+  let bars = '<div class="goal" style="bottom:calc(('+TARGET+'/'+max+')*(100% - 1.4em) + 1.4em)"><em>30</em></div>', labs = "";
+  weeks.forEach((w,i)=>{
+    const key = iso(w), v = vals[i], s = key===k;
+    bars += '<button class="col'+(v>=TARGET?" hit":"")+(s?" sel":"")+'" data-w="'+key+'" aria-label="Week of '+fmt(w)+': '+show(v)+' points">'
+      +'<span class="v">'+(v?show(v):"")+'</span><span class="bar" style="height:calc('+v+'/'+max+'*(100% - 1.4em))"></span></button>';
+    labs += '<span class="'+(s?"sel":"")+'">'+(i===11?"Now":fmt(w))+'</span>';
+  });
+  $("bars").innerHTML = bars; $("labels").innerHTML = labs;
+  document.querySelectorAll(".col").forEach(b=>b.onclick=()=>{ const p=b.dataset.w.split("-"); cur = new Date(+p[0],+p[1]-1,+p[2]); setTab("week"); render(); });
+  const prev = total(iso(addDays(cur,-7))), d = t - prev;
+  $("compare").textContent = (d===0 ? "Same as the week before." : (d>0?"Up ":"Down ")+show(Math.abs(d))+" from the week before.")+" Tap a bar to open that week.";
+  const logged = vals.filter(v=>v>0);
+  const avg = logged.length ? logged.reduce((a,b)=>a+b,0)/logged.length : 0;
+  const stats = [[show(Math.max(0,...vals)),"Best week"],[show(avg),"Average, logged weeks"],[streak()+"","Week streak at 30+"],[vals.filter(v=>v>=TARGET).length+" of 12","Weeks at 30+"]];
+  $("stats").innerHTML = stats.map(s=>'<div class="stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join("");
+}
+
+function renderNutrients(sel){
+  const eaten = [...sel].filter(n=>FN[n]);
+  const cnt = {}, src = {};
+  Object.keys(NUTN).forEach(c=>{ cnt[c]=0; src[c]=[]; });
+  eaten.forEach(n=>[...FN[n]].forEach(c=>{ cnt[c]++; src[c].push(n); }));
+  const codes = Object.keys(NUTN);
+  const good = codes.filter(c=>cnt[c]>=2).length, some = codes.filter(c=>cnt[c]===1).length, none = codes.length-good-some;
+  $("nutNum").textContent = good+" of "+codes.length;
+  $("nutTxt").textContent = eaten.length ? "nutrients well covered this week. "+some+" partly, "+none+" missing." : "Pick foods on This week to see your nutrients.";
+  const w0 = {}; codes.forEach(c=>{ w0[c] = cnt[c]===0 ? 2 : cnt[c]===1 ? 1 : 0; });
+  const cand = Object.keys(FN).filter(n=>!sel.has(n) && PTS[n]===1);
+  const gain = (n,w)=>[...FN[n]].reduce((s,c)=>s+w[c],0);
+  const tag = n => EMO[n]+" "+cap(n);
+
+  // best next picks (greedy so each pick fills different gaps)
+  const picksEl = $("nutPicks"); picksEl.innerHTML = "";
+  if (!eaten.length){ picksEl.hidden = true; }
+  else {
+    picksEl.hidden = false;
+    const wk = Object.assign({}, w0), picks = [];
+    for (let i=0;i<4;i++){
+      let best = null, bs = 0;
+      cand.forEach(n=>{ if (picks.some(p=>p.n===n)) return; const g = gain(n,wk); if (g<=0) return; const s = g+(inSeason(n)?.3:0); if (s>bs){ bs=s; best=n; } });
+      if (!best) break;
+      picks.push({n:best, adds:[...FN[best]].filter(c=>wk[c]>0)});
+      [...FN[best]].forEach(c=>{ wk[c] = Math.max(0, wk[c]-1); });
+    }
+    if (!picks.length){
+      picksEl.innerHTML = '<h2>Gaps</h2><p class="cardhint" style="margin:0">Every nutrient is covered this week. Nice variety.</p>';
+    } else {
+      picksEl.innerHTML = '<h2>Eat these next</h2><p class="cardhint">Best foods to fill your gaps. 🍃 means in season now. Tap one to log it.</p><div class="picks"></div>';
+      const box = picksEl.querySelector(".picks");
+      picks.forEach(p=>{
+        const b = document.createElement("button"); b.className = "pick";
+        b.innerHTML = '<span class="e"></span><span class="n"></span><span class="a"></span>';
+        b.querySelector(".e").textContent = EMO[p.n];
+        b.querySelector(".n").textContent = cap(p.n)+(inSeason(p.n)?" 🍃":"");
+        b.querySelector(".a").textContent = "Adds "+p.adds.map(c=>NUTN[c].toLowerCase()).slice(0,4).join(", ");
+        b.onclick = ()=>toggle(p.n); box.appendChild(b);
+      });
+    }
+  }
+
+  // every nutrient
+  const root = $("nutGroups"); root.innerHTML = "";
+  if (!eaten.length) return;
+  NGROUPS.forEach(([title, cs])=>{
+    const g = document.createElement("section"); g.className = "ng";
+    g.innerHTML = "<h2></h2>"; g.querySelector("h2").textContent = title;
+    [...cs].forEach(c=>{
+      const n = cnt[c], st = n>=2 ? 2 : n;
+      const row = document.createElement("div"); row.className = "nrow s"+st;
+      const shown = src[c].slice(0,8).map(x=>EMO[x]).join("")+(src[c].length>8?" +"+(src[c].length-8):"");
+      row.innerHTML = '<div class="nh"><span class="nn"></span><span class="ns"></span></div><div class="nb"><i style="width:'+(Math.min(n,3)/3*100)+'%"></i></div>'
+        + (n ? '<div class="nsrc"></div>' : '');
+      row.querySelector(".nn").textContent = NUTN[c];
+      row.querySelector(".ns").textContent = st===2 ? "Covered" : st===1 ? "Some" : "Missing";
+      if (n) row.querySelector(".nsrc").textContent = shown;
+      if (st<2){
+        const w1 = {}; codes.forEach(x=>{ w1[x] = x===c ? 3 : w0[x]*.3; });
+        const tries = cand.filter(f=>FN[f].includes(c)).map(f=>({f, s:gain(f,w1)+(inSeason(f)?1:0)})).sort((a,b)=>b.s-a.s).slice(0,3);
+        if (tries.length){
+          const t = document.createElement("div"); t.className = "ntry"; t.append("Try");
+          tries.forEach(x=>{ const b = document.createElement("button"); b.className = "try"; b.textContent = tag(x.f); b.onclick = ()=>toggle(x.f); t.appendChild(b); });
+          row.appendChild(t);
+        }
+        if (NHINT[c]){ const h = document.createElement("p"); h.className = "nhint"; h.textContent = NHINT[c]; row.appendChild(h); }
+      }
+      g.appendChild(row);
+    });
+    root.appendChild(g);
+  });
+}
+
+function updateWeekUI(k,isNow){
+  $("banner").hidden = isNow;
+  $("bannerT").textContent = "Logging for "+fmt(cur)+" – "+fmt(addDays(cur,6));
+  const chips = $("wkChips"); chips.innerHTML = "";
+  for (let i=0;i<12;i++){
+    const w = addDays(thisMon,-7*i), key = iso(w);
+    const b = document.createElement("button"); b.className = "wkc"+(key===k?" sel":"");
+    b.innerHTML = "<span></span><b></b>";
+    b.firstChild.textContent = i===0 ? "This week" : fmt(w);
+    b.lastChild.textContent = show(total(key))+" pts";
+    b.onclick = ()=>{ cur = w; closeWk(); render(); };
+    chips.appendChild(b);
+  }
+  $("wkDate").max = iso(new Date());
+}
+function closeWk(){ $("wkPanel").hidden = true; $("label").setAttribute("aria-expanded","false"); }
+function setTab(t){
+  closeWk();
+  ["week","nutrients","trends"].forEach(x=>{ $("view-"+x).hidden = x!==t; $("tab-"+x).setAttribute("aria-selected", x===t); });
+  $("weekNav").hidden = t==="trends";
+}
+$("tab-week").onclick = ()=>setTab("week");
+$("tab-nutrients").onclick = ()=>setTab("nutrients");
+$("q").addEventListener("input", renderSearch);
+$("q").addEventListener("keydown", e=>{
+  if (e.key === "Enter"){ e.preventDefault(); if (firstAction) firstAction(); }
+  if (e.key === "Escape"){ $("q").value = ""; renderSearch(); }
+});
+$("label").onclick = ()=>{ const p = $("wkPanel"); p.hidden = !p.hidden; $("label").setAttribute("aria-expanded", !p.hidden); };
+$("bannerB").onclick = ()=>{ cur = new Date(thisMon); render(); };
+$("wkDate").onchange = e=>{
+  const v = e.target.value.split("-"); if (v.length!==3) return;
+  let m = monday(new Date(+v[0],+v[1]-1,+v[2])); if (m > thisMon) m = new Date(thisMon);
+  cur = m; e.target.value = ""; closeWk(); render();
+};
+$("tab-trends").onclick = ()=>setTab("trends");
+$("prev").onclick = ()=>{ cur = addDays(cur,-7); render(); };
+$("next").onclick = ()=>{ if (iso(cur)!==iso(thisMon)){ cur = addDays(cur,7); render(); } };
+twoStep($("clear"), "Tap again to clear", ()=>{ delete data[iso(cur)]; wts[iso(cur)] = Date.now(); save(); render(); });
+$("bkOut").onclick = ()=>{
+  const ta = $("bk"); ta.value = JSON.stringify({v:1, data:data, custom:custom});
+  ta.focus(); ta.select();
+  $("bkMsg").textContent = "Backup ready. Select all, copy it and keep it somewhere safe.";
+};
+$("bkIn").onclick = ()=>{
+  const m = $("bkMsg");
+  try {
+    const o = JSON.parse($("bk").value);
+    if (!o || typeof o.data !== "object" || Array.isArray(o.data)) throw 0;
+    const clean = {};
+    Object.keys(o.data).forEach(k=>{ if (/^\d{4}-\d{2}-\d{2}$/.test(k) && Array.isArray(o.data[k])) clean[k] = o.data[k].filter(x=>typeof x==="string"); });
+    const cu = {};
+    if (o.custom && typeof o.custom === "object") Object.keys(o.custom).forEach(t=>{
+      if (GROUPS.some(g=>g.t===t) && Array.isArray(o.custom[t])) cu[t] = o.custom[t].filter(c=>c && typeof c.n==="string" && typeof c.e==="string");
+    });
+    const now = Date.now(); Object.keys(data).concat(Object.keys(clean)).forEach(k=>{ wts[k] = now; });
+    data = clean; custom = cu; save(); saveCustom(); rebuildMaps(); buildTiles(); render();
+    m.textContent = "Restored "+Object.keys(clean).length+" weeks.";
+  } catch (e) { m.textContent = "That text isn’t a valid backup."; }
+};
+// cloud saving: each person's entries live in their own private db document
+let ref = null, timer = null, busy = false, dirty = false;
+function setSync(st){
+  const m = {connecting:"Connecting…", local:"Saved on this device only", syncing:"Saving…", saved:"Saved to your account", error:"Couldn’t sync. Saved on this device"};
+  const el = $("sync"); el.textContent = m[st] || ""; el.className = "sync "+st;
+}
+function payload(){ return {v:3, data:data, wts:wts, custom:custom, cts:cts, updated:Date.now()}; }
+function schedule(){ if (!ref) return; dirty = true; setSync("syncing"); clearTimeout(timer); timer = setTimeout(flush, 600); }
+async function flush(){
+  if (!ref || busy) return;
+  busy = true; dirty = false;
+  try { await ref.set(payload()); setSync(dirty ? "syncing" : "saved"); }
+  catch (e) { setSync("error"); }
+  busy = false;
+  if (dirty) timer = setTimeout(flush, 300);
+}
+function mergeRemote(r){
+  let changed = false;
+  const rd = r.data || {}, rw = r.wts || {};
+  new Set(Object.keys(rd).concat(Object.keys(rw))).forEach(k=>{
+    const rt = rw[k] || 0, lt = wts[k] || 0;
+    if (rt > lt){ data[k] = Array.isArray(rd[k]) ? rd[k].filter(x=>typeof x==="string") : []; wts[k] = rt; changed = true; }
+  });
+  if ((r.cts || 0) > cts && r.custom && typeof r.custom === "object"){ custom = r.custom; cts = r.cts; changed = true; }
+  if (changed){ rebuildMaps(); persistLocal(); buildTiles(); render(); }
+}
+async function initSync(){
+  setSync("connecting");
+  try {
+    if (!(window.claude && window.claude.use)) { setSync("local"); return; }
+    const user = await claude.use("user"), db = await claude.use("db");
+    if (!user || !db) { setSync("local"); return; }
+    const uid = await user.id();
+    if (!uid) { setSync("local"); return; }
+    const r = db.doc("data/users/"+uid+"/state");
+    setSync("syncing");
+    const snap = await r.get();
+    if (snap.exists) mergeRemote(snap.data() || {});
+    ref = r;
+    await flush();
+  } catch (e) { ref = null; setSync("local"); }
+}
+document.addEventListener("visibilitychange", ()=>{ if (document.hidden && dirty && ref){ clearTimeout(timer); flush(); } });
+buildTiles(); render(); initSync();
+</script>
+</body>
+</html>
