@@ -447,7 +447,15 @@ function renderSearch(){
   box.hidden = !raw; if (!raw) return;
   const c = canon(raw);
   const names = Object.keys(PTS).concat(EXTRA.filter(e=>!has(PTS,e.n)).map(e=>e.n));
-  const rank = n => n===c ? 0 : (n.startsWith(raw)||n.startsWith(c)) ? 1 : n.split(" ").some(w=>w.startsWith(raw)) ? 2 : (n.includes(raw)||n.includes(c)) ? 3 : 9;
+  // Search display labels and aliases as well as persistent food keys.
+  const rank = n => {
+    if (n===c) return 0;
+    const labels = [n, cap(n).toLowerCase(), ...Object.keys(ALIAS).filter(a=>ALIAS[a]===n)];
+    return Math.min(...labels.map(label=>
+      (label.startsWith(raw)||label.startsWith(c)) ? 1 :
+      label.split(" ").some(w=>w.startsWith(raw)) ? 2 :
+      (label.includes(raw)||label.includes(c)) ? 3 : 9));
+  };
   const rows = names.map(n=>({n:n, r:rank(n)})).filter(x=>x.r<9).sort((a,b)=>a.r-b.r || a.n.length-b.n.length).slice(0,7);
   const sel = new Set(picked(iso(cur)));
   rows.forEach(x=>{
