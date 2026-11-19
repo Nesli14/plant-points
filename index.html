@@ -85,8 +85,7 @@ h1{font-size:1.1rem;font-weight:600;margin:0;color:var(--muted)}
 .group{margin-top:26px}
 .group h2{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:600;margin:0 0 8px}
 .group h2 small{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
-.cell{position:relative}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));align-items:start;gap:8px}
 .tile{width:100%;position:relative;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:10px 4px 7px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.6;filter:grayscale(.75);transition:opacity .15s,filter .15s,background .15s}
 .tile .e{font-size:2rem;line-height:1.15}
 .tile .n{font-size:.72rem;line-height:1.2;overflow-wrap:anywhere}
@@ -94,7 +93,6 @@ h1{font-size:1.1rem;font-weight:600;margin:0;color:var(--muted)}
 .tile[aria-pressed="true"]::after{content:"✓";position:absolute;top:3px;right:7px;font-size:.78rem;font-weight:800;color:var(--leaf)}
 .tile.q{border-style:dashed}
 .tile.season::before{content:"🍃";position:absolute;top:3px;left:6px;font-size:.7rem}
-.rm{position:absolute;bottom:-5px;right:-4px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;font-size:.78rem;line-height:1;padding:8px 11px}
 .legend{font-size:.8rem;color:var(--muted);margin:22px 0 0}
 .reset{margin-top:14px;border:0;background:none;color:var(--muted);font-size:.85rem;text-decoration:underline;padding:0}
 
@@ -508,27 +506,13 @@ function buildTiles(){
     const grid = sec.querySelector(".grid");
     const names = foodsInGroup(g);
     names.forEach(n=>{
-      const cell = document.createElement("div"); cell.className = "cell";
       const b = document.createElement("button");
       b.className = "tile"+(g.p<1?" q":""); b.dataset.n = n;
       b.innerHTML = '<span class="e"></span><span class="n"></span>';
       renderFoodIcon(b.querySelector(".e"), n);
       b.querySelector(".n").textContent = cap(n);
       b.onclick = ()=>toggle(n);
-      cell.appendChild(b);
-      if (!has(g.i,n)){
-        const r = document.createElement("button"); r.className = "rm"; r.textContent = "×"; r.setAttribute("aria-label","Remove "+n+" from the list");
-        twoStep(r, "Remove?", ()=>{
-          for (const group of GROUPS){
-            if (custom[group.t]) custom[group.t] = custom[group.t].filter(c=>c.n!==n);
-          }
-          saveCustom();
-          Object.keys(data).forEach(k=>{ data[k] = data[k].filter(x=>x!==n); wts[k] = Date.now(); }); save();
-          rebuildMaps(); buildTiles(); render();
-        });
-        cell.appendChild(r);
-      }
-      grid.appendChild(cell);
+      grid.appendChild(b);
     });
     root.appendChild(sec);
   });

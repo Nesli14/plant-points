@@ -11,13 +11,13 @@ Plant points is a mobile-friendly, single-page tracker of the variety of plant f
 - Fruit, vegetables and herbs, legumes, and nuts and seeds earn 1 point per food. Items in the separate tea, coffee and spices group earn ¼ point.
 - The score ring, achievement levels, badges and streak encourage reaching the target. The highest named level starts at 40 points.
 - Users can browse past weeks, choose a date, and return to the current week. Future weeks are disabled.
-- Clearing a week and removing a custom food require a second tap within three seconds.
+- Clearing a week requires a second tap within three seconds.
 
 ## Views
 
 ### This week
 
-Shows the score, seasonal suggestions, food search and category grids. Search recognises aliases and simple singular/plural variants. It can add predefined search foods to their catalogue categories and marks them eaten for the selected week. Existing custom foods remain searchable, selectable and removable. The app does not offer free-form additions.
+Shows the score, seasonal suggestions, food search and category grids. Search recognises aliases and simple singular/plural variants. It can add predefined search foods to their catalogue categories and marks them eaten for the selected week. Existing custom foods remain searchable and selectable. The app does not offer free-form additions or food removal across weeks.
 
 Seasonal suggestions use a hard-coded Central European/German harvest calendar. They reflect the current calendar month, including while viewing a historical week.
 
