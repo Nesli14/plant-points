@@ -17,7 +17,7 @@ Plant points is a mobile-friendly, single-page tracker of the variety of plant f
 
 ### This week
 
-Shows the score, seasonal suggestions, food search and category grids. Search matches the built-in catalogue and an additional catalogue, recognises aliases and simple singular/plural variants, and can add new foods to a selected category. Adding a custom food also marks it eaten for the selected week.
+Shows the score, seasonal suggestions, food search and category grids. Search recognises aliases and simple singular/plural variants. It can add predefined search foods to their catalogue categories and marks them eaten for the selected week. Existing custom foods remain searchable, selectable and removable. The app does not offer free-form additions.
 
 Seasonal suggestions use a hard-coded Central European/German harvest calendar. They reflect the current calendar month, including while viewing a historical week.
 
@@ -47,14 +47,14 @@ The page requests Bricolage Grotesque from Google Fonts and has system font fall
 | Symbol | Responsibility |
 | --- | --- |
 | `GROUPS` | Built-in foods, group titles, point values, default and per-food emoji |
-| `PTS`, `EMO`, `rebuildMaps()` | Derived point and emoji lookup tables, including custom foods |
+| `PTS`, `EMO`, `foodGroups`, `rebuildMaps()` | Derived points, emoji and category lookups, with catalogue definitions taking precedence over saved custom foods of the same key |
 | `EXTRA_SRC`, `EXTRA` | Additional foods available through search |
 | `ALIAS`, `canon()` | Canonical food names and search spelling variants |
 | `cap()` | Display labels; specifically displays `bok choy` as “Pak choi” |
 | `SEASON`, `WINTER` | Month-based seasonal food lists |
 | `NUTN`, `NGROUPS`, `FN`, `NHINT` | Nutrient labels, groups, food mappings and explanatory hints |
 | `FOOD_ICONS`, `renderFoodIcon()` | Embedded image icons with emoji fallback |
-| `toggle()`, `addCustom()`, `buildTiles()` | Food selection, custom catalogue and tile construction |
+| `toggle()`, `pickFood()`, `buildTiles()` | Food selection, adding predefined search foods and tile construction |
 | `render()` | Updates selected-week state, score, seasonal foods, trends and nutrients |
 | `persistLocal()`, `save()` | Browser storage and scheduling optional cloud saves |
 | `initSync()`, `mergeRemote()`, `flush()` | Optional host-provided cloud persistence |
@@ -66,7 +66,7 @@ Food keys are lowercase names; multiword names contain spaces. They are persiste
 The in-memory structures are:
 
 - `data`: Monday date strings (`YYYY-MM-DD`) mapped to arrays of selected food keys.
-- `custom`: group titles mapped to arrays of `{n: name, e: emoji}`.
+- `custom`: group titles mapped to arrays of `{n: name, e: emoji}` for previously saved custom foods and added search foods. If a catalogue food shares the saved key, it supplies the category, points and visual. The saved key continues to link to weekly history.
 - `wts`: per-week change timestamps, including timestamps for cleared weeks.
 - `cts`: timestamp for the custom catalogue as a whole.
 
