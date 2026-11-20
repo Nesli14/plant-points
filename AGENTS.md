@@ -34,8 +34,8 @@ Shows the current week and preceding 11 weeks, comparisons with the selected wee
 ## Files and execution
 
 - `index.html`: the complete app, including HTML, CSS, JavaScript and embedded image data. No build step, package manager or framework is required.
-- `icons/*.png`: seven resized source images, each fitting within 96 × 96 pixels, with transparency and proportions preserved. Together they are about 82 KB.
-- `icons/originals/*.png`: full-resolution originals retained for future iteration. Preserve these files.
+- `icons/*.png`: resized food icons, each fitting within 96 × 96 pixels, with transparency and proportions preserved.
+- `icons-originals/*.png`: full-resolution originals retained for future iteration. Preserve these files.
 - `index-before-food-icons.html`: backup from before custom icons were embedded. It is not the current app.
 
 Open `index.html` in a modern browser to use the local app. A stable local web origin can also be used during development. Browser storage can differ between file URLs, server origins, browsers and profiles; use the app’s backup export before changing how it is opened.
@@ -80,9 +80,9 @@ Cloud payloads are `{v:3, data, wts, custom, cts, updated}`. Initial remote data
 
 ## Food icons
 
-Custom transparent PNG icons exist for plum, red cabbage, beetroot, radish, peas, edamame and tofu. `FOOD_ICONS` maps their canonical keys to base64 PNG data URLs embedded in the HTML. The app does not load images from the `icons` directory at runtime.
+`FOOD_ICONS` maps canonical food keys to base64 PNG data URLs embedded in the HTML. The app does not load images from the `icons` directory at runtime.
 
-Always use `renderFoodIcon()` for food imagery. It creates an image for these seven foods and otherwise uses the emoji from `EMO` or the provided fallback. It is used in grids, search, seasonal suggestions, nutrient recommendations and nutrient source lists.
+Always use `renderFoodIcon()` for food imagery. It creates an image for foods in `FOOD_ICONS` and otherwise uses the emoji from `EMO` or the provided fallback. It is used in grids, search, seasonal suggestions, nutrient recommendations and nutrient source lists.
 
 CSS sizes `.food-icon` to 1 em, matching the surrounding context. Images next to visible food labels are decorative; source-list images receive food-name alternative text. Preserve this distinction.
 
